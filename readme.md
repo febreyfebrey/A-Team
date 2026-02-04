@@ -65,22 +65,40 @@ You know agents work better with proper division of labor, but manually planning
 
 ### Workflow
 
-```
-Phase 1: Discovery       Phase 2: Planning      Phase 3: Generation      Phase 4: Optimization
-┌──────────────────┐     ┌──────────────┐       ┌───────────────────┐     ┌──────────────────┐
-│requirements-analyst│    │              │       │  generation-lead  │     │                  │
-│  (Interviews)      │───▶│ skill-planner│──────▶│  (Sub-coordinator)│────▶│ prompt-optimizer │
-│role-designer      │    │ (Skill plan)  │       │ ┌─ agent-writer  │     │ (Prompt optimize)│
-│  (Role design)    │    │              │       │ ├─ skill-writer  │     │                  │
-└──────────────────┘     └──────────────┘       │ └─ rule-writer   │     └──────────────────┘
-         ▲                                       └───────────────────┘              │
-         │                                                                          ▼
-    team-architect (Chief coordinator, spans entire process) ─────────────────▶ Review & Deliver
-                                                                                    │
-                                                                             teams/{name}/
-                                                                             ├── agents/
-                                                                             ├── skills/
-                                                                             └── rules/
+```mermaid
+flowchart LR
+ subgraph P1["Phase 1: Discovery"]
+    direction TB
+        RA["requirements-analyst <br> Interviews"]
+        RD["role-designer <br> Role design"]
+  end
+ subgraph P2["Phase 2: Planning"]
+        SP["skill-planner <br> Skill plan"]
+  end
+ subgraph P3["Phase 3: Generation"]
+    direction TB
+        GL["generation-lead <br> Sub-coordinator"]
+        AW["agent-writer"]
+        SW["skill-writer"]
+        RW["rule-writer"]
+  end
+ subgraph P4["Phase 4: Optimization"]
+        PO["prompt-optimizer <br> Prompt optimize"]
+  end
+ subgraph DIR["teams/name/"]
+    direction TB
+        agents["agents/"]
+        skills["skills/"]
+        rules["rules/"]
+  end
+    GL --- AW & SW & RW
+    TA(["team-architect <br> Chief coordinator, spans entire process"]) -.-> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> RD_OUT{"Review & Deliver"}
+    TA ----> RD_OUT
+    RD_OUT --> DIR
 ```
 
 ### Design Principles
@@ -166,22 +184,57 @@ A-Team produces an initial framework. You can:
 
 ### 工作流程
 
-```
-Phase 1: 需求探索      Phase 2: 技能規劃     Phase 3: 結構生成       Phase 4: 優化
-┌──────────────────┐   ┌──────────────┐     ┌───────────────────┐   ┌──────────────────┐
-│requirements-analyst│  │              │     │  generation-lead  │   │                  │
-│  （深度訪談）      │──▶│ skill-planner│────▶│   （子調度者）     │──▶│ prompt-optimizer │
-│role-designer      │  │ （技能規劃）   │     │ ┌─ agent-writer  │   │ （Prompt 優化）   │
-│  （角色設計）      │  │              │     │ ├─ skill-writer  │   │                  │
-└──────────────────┘   └──────────────┘     │ └─ rule-writer   │   └──────────────────┘
-         ▲                                   └───────────────────┘            │
-         │                                                                    ▼
-    team-architect（總調度者，貫穿全流程）──────────────────────────────▶ 驗收與交付
-                                                                              │
-                                                                       teams/{name}/
-                                                                       ├── agents/
-                                                                       ├── skills/
-                                                                       └── rules/
+```mermaid
+flowchart LR
+    %% 總架構師
+    TA([團隊架構師 <br/> 首席協調員，橫跨整個流程])
+
+    %% 第一階段
+    subgraph P1 [第一階段：需求探索]
+        direction TB
+        RA[需求分析師 <br/> 訪談]
+        RD[角色設計師 <br/> 角色設計]
+    end
+
+    %% 第二階段
+    subgraph P2 [第二階段：規劃]
+        SP[技能規劃師 <br/> 技能方案]
+    end
+
+    %% 第三階段
+    subgraph P3 [第三階段：生成]
+        direction TB
+        GL[生成組長 <br/> 次級協調員]
+        AW[代理人撰寫員]
+        SW[技能撰寫員]
+        RW[規則撰寫員]
+        
+        GL --- AW & SW & RW
+    end
+
+    %% 第四階段
+    subgraph P4 [第四階段：優化]
+        PO[提示詞優化師 <br/> 提示詞優化]
+    end
+
+    %% 最後交付
+    RD_OUT{審查與交付}
+    
+    subgraph DIR [teams/名稱/]
+        direction TB
+        agents[agents/ 代理人]
+        skills[skills/ 技能]
+        rules[rules/ 規則]
+    end
+
+    %% 連線邏輯
+    TA -.-> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> RD_OUT
+    TA ----> RD_OUT
+    RD_OUT --> DIR
 ```
 
 ### 產出範例
