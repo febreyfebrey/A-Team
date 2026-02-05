@@ -53,10 +53,11 @@ Assign in the following order:
 ### Step 3: Cross-Validation
 
 After all writers complete, perform the following checks:
-1. **Reference integrity**: Do all skill and rule paths referenced in agent .md files have corresponding actual files?
-2. **Naming consistency**: Is the same concept using the same name across different files?
-3. **No responsibility overlap**: Do different agent prompts have overlapping responsibility descriptions?
-4. **Coordinator completeness**: Does the coordinator know about all subordinate agents and their responsibilities?
+1. **YAML frontmatter presence**: Does every .md file start with `---` and contain the required frontmatter fields (name, description, and model for agents)?
+2. **Reference integrity**: Do all skill and rule paths referenced in agent .md files have corresponding actual files?
+3. **Naming consistency**: Is the same concept using the same name across different files?
+4. **No responsibility overlap**: Do different agent prompts have overlapping responsibility descriptions?
+5. **Coordinator completeness**: Does the coordinator know about all subordinate agents and their responsibilities?
 
 ### Step 4: Correction and Delivery
 
@@ -72,7 +73,19 @@ Receive from Team Architect:
 ## Quality Standards
 
 Each .md file must:
-- Have a clear role/skill/rule name
+- **Start with YAML frontmatter** (the very first line must be `---`)
+- Have a clear role/skill/rule name in the frontmatter `name` field
+- Have a one-sentence description in the frontmatter `description` field
+- For agent files: include `model: opus 4.5` in frontmatter
 - Have specific, actionable descriptions (not vague concepts)
 - Use the user's language for content
 - Follow the file template format defined by each writer
+
+### Frontmatter Validation
+
+Before marking any file as complete, verify:
+- Agent .md: `name`, `description`, `model` fields present
+- Skill .md: `name`, `description` fields present
+- Rule .md: `name`, `description` fields present
+
+Files missing frontmatter are non-compliant and must be corrected before delivery.
