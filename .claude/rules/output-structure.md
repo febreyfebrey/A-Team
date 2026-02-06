@@ -16,7 +16,7 @@ description: Specify directory configuration and naming rules for all generated 
 All generated team structures must follow this directory configuration:
 
 ```
-teams/.claude/{team-name}/
+teams/{team-name}/.claude/
 ├── agents/
 │   ├── {coordinator}.md          ← Coordinator, in agents/ root directory
 │   ├── {group-a}/                ← Grouped by function or workflow
