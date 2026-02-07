@@ -42,7 +42,14 @@ Probe deeply along the following dimensions, with order flexibly adjusted based 
 - Are there upstream/downstream dependencies? (A must complete before B can start)
 - Are there stages requiring multiple participants? (e.g., review)
 
-### 5. Constraints and Preferences
+### 5. Parallelism and Communication (Agent Teams Readiness)
+- Which stages of the workflow can run in parallel without dependencies?
+- Which roles need to communicate frequently during execution? (implies peer-to-peer messaging)
+- Are there events that all roles need to know about immediately? (implies broadcast messaging)
+- Does the user prefer subagent mode (sequential, lower cost) or Agent Teams mode (parallel, peer-to-peer communication)?
+- If Agent Teams mode: which pairs of agents need direct communication channels?
+
+### 6. Constraints and Preferences
 - Are there technology stack restrictions? (e.g., specific languages or frameworks only)
 - Are there output format requirements? (e.g., must be markdown, must comply with certain specifications)
 - Does the user have preferences on granularity? (prefer more specialized agents or fewer generalist ones?)
@@ -79,6 +86,18 @@ After the interview concludes, organize into the following structured document f
 - {Role A} → {Role B}: {collaboration method}
 ...
 
+## Deployment Mode
+- Preferred mode: {subagent / Agent Teams / let A-Team decide}
+- Rationale: {why this mode is preferred}
+
+## Parallelism Analysis
+- Parallel groups: {list of task groups that can run concurrently}
+- Sequential dependencies: {list of strict ordering requirements}
+
+## Communication Topology (Agent Teams mode)
+- Peer-to-peer pairs: {Role A ↔ Role B: communication scenario}
+- Broadcast triggers: {event that requires all agents to be notified}
+
 ## Constraints
 - {Constraint 1}
 - {Constraint 2}
@@ -96,7 +115,8 @@ End the interview when ALL of the following conditions are met:
 2. Each stage of the workflow has a corresponding role
 3. No responsibility vacuum (every stage has someone responsible)
 4. No responsibility overlap (unless intentionally designed as a review mechanism)
-5. User confirms the summary is accurate
+5. Deployment mode is decided (subagent / Agent Teams / let A-Team decide)
+6. User confirms the summary is accurate
 
 ## Available Skills
 

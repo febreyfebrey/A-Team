@@ -26,7 +26,7 @@ Frontmatter must contain the following three fields:
 |-------|----------|-------------|
 | `name` | Yes | Agent name, in English |
 | `description` | Yes | One sentence describing this agent's core responsibility |
-| `model` | Yes | Fixed value: `opus` |
+| `model` | Yes | Claude model identifier: `opus`, `sonnet`, or `haiku` |
 
 **Violation determination**: File doesn't start with `---` or missing any required field → Output is non-compliant, must be corrected.
 
@@ -36,7 +36,7 @@ Frontmatter must contain the following three fields:
 ---
 name: Illustrator
 description: Create children's picture book illustrations using AI image generation tools
-model: opus
+model: sonnet
 ---
 ```
 
@@ -51,6 +51,14 @@ model: opus
 
 ↑ Missing YAML frontmatter, non-compliant.
 
+### Model Selection Guide
+
+| Model | Use when |
+|-------|----------|
+| `opus` | Deep reasoning, complex coordination, architectural decisions |
+| `sonnet` | Balanced capability and cost, most execution tasks (default) |
+| `haiku` | Fast lightweight tasks, simple lookups, formatting |
+
 ## Agent .md File Template
 
 Each agent .md must contain the following sections, written in this order:
@@ -59,7 +67,7 @@ Each agent .md must contain the following sections, written in this order:
 ---
 name: {Agent name, English}
 description: {One sentence describing this agent's core responsibility}
-model: opus
+model: {opus | sonnet | haiku}
 ---
 
 # {Agent Name}
@@ -105,6 +113,22 @@ model: opus
 ### Peers (Collaborates with)
 - {agent-name}: {Under what circumstances collaboration with this agent is needed}
 
+## Communication Patterns (Agent Teams mode)
+
+{This section defines how this agent communicates when deployed in Agent Teams mode. Omit this section if the team only supports subagent mode.}
+
+### Direct Messages
+- → {agent-name}: {Send when {trigger condition}, content: {what to communicate}}
+- ← {agent-name}: {Expect to receive when {trigger condition}}
+
+### Broadcast
+- Send broadcast when: {critical event that all teammates must know about}
+- React to broadcasts about: {types of broadcast events this agent must act on}
+
+### File Ownership
+- Owns: {list of files/directories this agent exclusively writes to}
+- Reads from: {list of files/directories this agent reads but does not write to}
+
 ## Boundaries
 
 {List what this agent is NOT responsible for and should NOT do. This is as important as "Responsibilities".}
@@ -130,6 +154,13 @@ If writing a coordinator role, the .md must additionally include:
 ## Quality Control Mechanism
 
 {Describe how the coordinator ensures final output quality}
+
+## Parallelism Strategy
+
+{Define which agents can run in parallel and task sizing guidelines}
+- Parallel groups: {list groups of agents that can work simultaneously}
+- Sequential gates: {list checkpoints where parallel work must sync}
+- Task size target: 5-6 tasks per agent for optimal throughput
 ```
 
 ## Writing Guidelines

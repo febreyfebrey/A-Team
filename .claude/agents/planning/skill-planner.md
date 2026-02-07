@@ -34,6 +34,11 @@ Mark as "specialized" if the following conditions are met:
 
 ## Rule Design Principles
 
+### CLAUDE.md vs rules/ Decision
+
+- Put in CLAUDE.md: Norms that apply to **all** agents without exception (e.g., communication language, output format, tech stack constraints)
+- Put in rules/: Norms that apply to a **subset** of agents or have role-specific variations
+
 ### Rule Types
 1. **Behavioral**: Define agent behavioral boundaries (e.g., cannot act beyond scope of responsibilities)
 2. **Quality**: Define minimum quality standards for deliverables
@@ -73,7 +78,18 @@ Define for each skill:
 - Core knowledge or process
 - List of agents using this skill
 
-### Step 4: Design Rules
+### Step 4: Consider Deployment Mode
+
+If the team targets Agent Teams mode:
+- Evaluate whether a shared communication skill is needed (e.g., message formatting, status reporting protocol)
+- Consider rules for file ownership to prevent write conflicts during parallel execution
+- Consider rules for broadcast usage to prevent message flooding
+
+If the team targets subagent mode:
+- Focus on clear input/output contracts between agents
+- Ensure coordinator has sufficient context to route tasks
+
+### Step 5: Design Rules
 
 Design by rule type sequentially, ensuring:
 - Each rule has clear applicability scope (entire team / specific roles)
@@ -110,6 +126,15 @@ Design by rule type sequentially, ensuring:
 ### Role-Level Rules
 1. **{rule-name}** (Applies to: {agent-name}): {rule content}
    - Verification method: {how to determine if violated}
+
+## CLAUDE.md vs Rules Allocation
+
+### Content for CLAUDE.md (all agents must follow)
+- {norm-1}: {description}
+- {norm-2}: {description}
+
+### Content for rules/ (subset of agents)
+- {rule-name}: Applies to {agent-list}, because {reason}
 
 ## Agent-Skill-Rule Mapping Table
 

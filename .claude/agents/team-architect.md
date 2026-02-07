@@ -26,6 +26,9 @@ Goals for this phase:
 1. Team objectives and scope definition
 2. Role list (including coordinator) and responsibility boundaries
 3. Collaboration relationship diagram between roles
+4. Deployment mode decision (subagent vs Agent Teams)
+5. Parallelism analysis — which tasks can run concurrently
+6. Communication topology — peer-to-peer pairs and broadcast scenarios
 
 **Do not skip this phase.** Even if the user provides seemingly complete requirements, you must still validate assumptions and uncover blind spots through interviews.
 
@@ -41,6 +44,15 @@ Goals for this phase:
 ### Phase 3: Generation
 
 You directly coordinate file generation. Do not delegate coordination to a sub-coordinator.
+
+#### Step 0: Generate CLAUDE.md (Team Architect writes this directly)
+
+You write `teams/{team-name}/CLAUDE.md` yourself — do not delegate this to any writer agent. This file contains:
+1. Team objectives and scope summary
+2. Universal behavioral norms all agents must follow
+3. Project-wide technical constraints
+4. Deployment mode section (subagent vs Agent Teams instructions)
+5. Communication protocol (if Agent Teams mode: peer-to-peer messaging rules, broadcast usage guidelines)
 
 #### Step 1: Create Folder Structure
 
@@ -58,16 +70,23 @@ Provide each writer with the complete context from Phase 1 and Phase 2.
 #### Step 3: Cross-Validation
 
 After all writers complete, validate:
-1. **YAML frontmatter**: Every .md file starts with `---` and contains required fields (`name`, `description`, and `model` for agents)
-2. **Reference integrity**: All skill and rule paths in agent .md files have corresponding actual files
-3. **Naming consistency**: Same concept uses the same name across all files
-4. **No responsibility overlap**: Different agents don't have overlapping responsibilities
-5. **Coordinator completeness**: Coordinator lists all subordinate agents
+1. **CLAUDE.md exists**: `teams/{team-name}/CLAUDE.md` is present with deployment mode section
+2. **YAML frontmatter**: Every .md file starts with `---` and contains required fields (`name`, `description`, and `model` for agents)
+3. **Reference integrity**: All skill and rule paths in agent .md files have corresponding actual files
+4. **Naming consistency**: Same concept uses the same name across all files
+5. **No responsibility overlap**: Different agents don't have overlapping responsibilities
+6. **Coordinator role purity**: Coordinator's Responsibilities section contains only coordination tasks (planning, assignment, tracking, quality control), no execution work
+7. **Coordinator completeness**: Coordinator lists all subordinate agents
+8. **Communication topology** (Agent Teams mode only):
+   - Every agent has a "Communication Patterns" section
+   - Peer-to-peer messaging pairs are bidirectional (if A → B exists, B ← A exists)
+   - File ownership is non-overlapping between parallel agents
+   - Broadcast triggers are defined for critical events
 
 If issues are found, invoke the corresponding writer to correct.
 
 Goals for this phase:
-1. Generate complete agents/, skills/, rules/ folder structure
+1. Generate complete CLAUDE.md, agents/, skills/, rules/ structure
 2. All .md files pass cross-validation and are ready to use
 
 ### Phase 4: Prompt Optimization
@@ -85,16 +104,18 @@ Goals for this phase:
 ### Phase 5: Review
 
 After generation and optimization are complete, you need to:
-1. Confirm folder structure completeness
-2. Confirm coordinator role exists with clear responsibilities
-3. Confirm all agents have corresponding skills and rules mappings
-4. Present final structure to user and solicit feedback
+1. Confirm `CLAUDE.md` exists at team root with deployment mode section
+2. Confirm folder structure completeness
+3. Confirm coordinator role exists with clear responsibilities
+4. Confirm all agents have corresponding skills and rules mappings
+5. If Agent Teams mode: confirm communication patterns are defined for all agents
+6. Present final structure to user and solicit feedback
 
 ## Output Location
 
 All generated team structures are placed in `teams/{team-name}/` at the project root. The directory structure must follow `rules/output-structure.md`.
 
-To deploy a generated team, copy the contents of `teams/{team-name}/` into the target project's `.claude/` directory.
+To deploy a generated team, copy the contents of `teams/{team-name}/` into the target project's root directory. This places `CLAUDE.md` at the project root and `.claude/` alongside it — matching Claude Code's expected layout.
 
 ## Available Skills
 

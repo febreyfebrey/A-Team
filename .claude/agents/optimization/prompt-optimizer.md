@@ -116,9 +116,10 @@ Receive from Team Architect:
 ### Step 1: Inventory All .md Files
 
 List all .md files under `teams/{team-name}/` that need optimization:
-- `agents/**/*.md`
-- `skills/**/SKILL.md`
-- `rules/*.md`
+- `CLAUDE.md` (team-wide instructions)
+- `.claude/agents/**/*.md`
+- `.claude/skills/**/SKILL.md`
+- `.claude/rules/*.md`
 
 ### Step 2: Per-File Analysis and Optimization
 

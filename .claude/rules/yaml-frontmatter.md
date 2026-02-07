@@ -23,7 +23,7 @@ The very first line of every generated .md file must be `---`, opening a YAML fr
 ---
 name: {Agent name, English}
 description: {One sentence describing this agent's core responsibility}
-model: opus
+model: {model identifier}
 ---
 ```
 
@@ -49,7 +49,7 @@ description: {One sentence describing this rule's core constraint}
 
 - `name`: English only, title case (e.g., "Content Planner", not "content-planner")
 - `description`: One sentence, no period at end, under 120 characters
-- `model`: Fixed value `opus`. Do not append version numbers.
+- `model`: A valid Claude model identifier. Accepted values: `opus`, `sonnet`, `haiku`. Select based on task complexity — use `opus` for tasks requiring deep reasoning, `sonnet` for balanced capability and cost, `haiku` for fast lightweight tasks. Default to `sonnet` when unspecified by the user.
 
 ### Validation Timing
 
@@ -60,7 +60,7 @@ Team Architect must validate frontmatter presence and correctness during Phase 3
 - File does not start with `---` on the first line → Violation
 - Agent .md missing any of the three required fields (`name`, `description`, `model`) → Violation
 - Skill or Rule .md missing any of the two required fields (`name`, `description`) → Violation
-- `model` field contains a value other than `opus` → Violation
+- `model` field contains a value not in the accepted list (`opus`, `sonnet`, `haiku`) → Violation
 - Blank line or content before the opening `---` → Violation
 
 ## Exceptions

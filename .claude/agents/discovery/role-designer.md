@@ -64,6 +64,16 @@ Clarify for each role:
 - Review relationships (who reviews whose work)
 - Trigger relationships (under what conditions a role needs to intervene)
 
+### Step 6: Analyze Parallelism and Communication Topology
+
+Determine which agents can operate concurrently:
+1. **Identify parallel groups**: Agents with no upstream/downstream dependency between them can run in parallel
+2. **Identify file ownership**: Ensure parallel agents write to different files to avoid conflicts
+3. **Design communication patterns** (for Agent Teams mode):
+   - **Peer-to-peer**: Define which agent pairs need direct messaging and under what circumstances (e.g., frontend ↔ backend for API contract changes)
+   - **Broadcast**: Define events that require all agents to be notified (e.g., major architecture decision changes, shared dependency updates)
+   - **Via coordinator only**: Define information that must flow through the coordinator (e.g., task reassignment, priority changes)
+
 ## Output Format
 
 ```markdown
@@ -94,6 +104,28 @@ Clarify for each role:
 
 ## Collaboration Flow Diagram
 {Describe the typical task flow path between agents}
+
+## Parallelism Map
+### Parallel Groups
+- Group 1: [{agent-a}, {agent-b}] — Can run concurrently because {reason}
+- Group 2: [{agent-c}, {agent-d}] — Can run concurrently because {reason}
+
+### Sequential Dependencies
+- {agent-a} must complete before {agent-c} can start
+
+### File Ownership
+- {agent-a}: owns {file-set-1}
+- {agent-b}: owns {file-set-2}
+
+## Communication Topology (Agent Teams mode)
+### Peer-to-Peer Channels
+- {agent-a} ↔ {agent-b}: {when and why they need direct communication}
+
+### Broadcast Triggers
+- {event}: All agents must be notified when {condition}
+
+### Coordinator-Only Communication
+- {information type}: Must flow through coordinator because {reason}
 
 ## Design Decision Log
 - {Why X and Y were split into two roles instead of one}
