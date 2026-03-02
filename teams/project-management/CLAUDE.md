@@ -73,9 +73,9 @@
 本團隊在組織工作流中的定位：
 
 ```
-product-management（決策）→ project-management（排序 + 追蹤）→ requirements-docs（定義）→ engineering（建造）
+product-management（決策）→ project-management（排序 + 追蹤）→ business-analysis（定義）→ engineering（建造）
 ```
 
 - 從 product-management 接收優先級決策與新需求指示
 - 在 JIRA 中執行排序與追蹤，產出進度報告
-- 將排序結果與進度資訊提供給 requirements-docs 與 engineering 參考
+- 將排序結果與進度資訊提供給 business-analysis 與 engineering 參考

@@ -15,7 +15,7 @@
 本團隊處於產品開發流程 (Product Development Pipeline) 的最上游：
 
 ```
-product-management (決策) → project-management (排程與追蹤) → requirements-docs (定義) → engineering (實作)
+product-management (決策) → project-management (排程與追蹤) → business-analysis (定義) → engineering (實作)
 ```
 
 ### 向下游傳遞的產出物
@@ -24,8 +24,8 @@ product-management (決策) → project-management (排程與追蹤) → require
 |--------|----------|------|
 | 產品路線圖 (Product Roadmap) | project-management | 排定專案優先順序與時程 |
 | 需求准入決策 (Demand Intake Decision) | project-management | 確認哪些需求進入開發排程 |
-| 競爭情報報告 (Competitive Intelligence Report) | project-management, requirements-docs | 提供市場背景與功能對標資訊 |
-| 產品框架定義 (Product Framework) | requirements-docs | 作為撰寫 PRD 的產品架構參考 |
+| 競爭情報報告 (Competitive Intelligence Report) | project-management, business-analysis | 提供市場背景與功能對標資訊 |
+| 產品框架定義 (Product Framework) | business-analysis | 作為撰寫 PRD 的產品架構參考 |
 
 ### 從上游接收的輸入
 

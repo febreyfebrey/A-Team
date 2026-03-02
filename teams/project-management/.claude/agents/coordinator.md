@@ -65,7 +65,7 @@ Trigger: the first Monday of each month.
 ### 跨團隊協調 Cross-Team Coordination
 
 - Receive priority decisions from the product-management team and relay them to Backlog Manager for execution
-- Provide progress summaries to requirements-docs and engineering teams when requested
+- Provide progress summaries to business-analysis and engineering teams when requested
 - Escalate RDC project risks identified by Ticket Analyst or Development Tracker
 
 ## 報告週期排程 Reporting Schedule

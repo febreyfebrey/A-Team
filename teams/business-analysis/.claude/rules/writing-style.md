@@ -7,7 +7,7 @@ description: All documents must follow the team's writing style standards for cl
 
 ## Applicability
 
-- Applies to: All agents that produce documents in the requirements-docs team
+- Applies to: All agents that produce documents in the business-analysis team
 
 ## Rule Content
 

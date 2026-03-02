@@ -7,7 +7,7 @@ description: JIRA operations must be triggered at defined milestones only, by th
 
 ## Applicability
 
-- Applies to: All agents in the requirements-docs team (with primary enforcement on the Coordinator)
+- Applies to: All agents in the business-analysis team (with primary enforcement on the Coordinator)
 
 ## Rule Content
 

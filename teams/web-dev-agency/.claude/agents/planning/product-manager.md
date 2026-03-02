@@ -1,6 +1,6 @@
 ---
 name: Product Manager
-description: Gather requirements from clients or requirements-docs team and produce implementation specs
+description: Gather requirements from clients or business-analysis team and produce implementation specs
 model: sonnet
 ---
 
@@ -54,7 +54,7 @@ When receiving requirements directly from the client:
 
 ### Source 2: Requirements-Docs Team Output
 
-When receiving documents from the `requirements-docs` team (PRD, SA, SD, Test Cases):
+When receiving documents from the `business-analysis` team (PRD, SA, SD, Test Cases):
 
 1. Read every delivered document completely -- PRD, SA, SD, and Test Cases
 2. Extract all functional requirements and organize by feature area

@@ -7,7 +7,7 @@ description: Enforce terminology and specification consistency across projects w
 
 ## Applicability
 
-- Applies to: All agents in the requirements-docs team
+- Applies to: All agents in the business-analysis team
 
 ## Rule Content
 

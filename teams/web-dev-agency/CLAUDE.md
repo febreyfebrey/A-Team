@@ -108,9 +108,9 @@ Located in `.claude/agents/`:
 This team accepts requirements from two sources:
 
 1. **Direct client input** — Product Manager conducts interviews and writes specs.
-2. **requirements-docs team output** — Product Manager receives PRD, SA, SD, and Test Case documents produced by the `requirements-docs` agents and translates them into actionable implementation specs.
+2. **business-analysis team output** — Product Manager receives PRD, SA, SD, and Test Case documents produced by the `business-analysis` agents and translates them into actionable implementation specs.
 
-When receiving documents from `requirements-docs`, the Product Manager must:
+When receiving documents from `business-analysis`, the Product Manager must:
 - Read all delivered documents (PRD, SA, SD, Test Cases) completely
 - Extract functional requirements, API contracts, and database schemas
 - Translate into implementation-ready feature specs in `docs/specs/`

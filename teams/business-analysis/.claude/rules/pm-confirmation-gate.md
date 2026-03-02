@@ -7,7 +7,7 @@ description: Every phase output must receive PM confirmation before proceeding t
 
 ## Applicability
 
-- Applies to: All agents in the requirements-docs team
+- Applies to: All agents in the business-analysis team
 
 ## Rule Content
 

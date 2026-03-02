@@ -7,7 +7,7 @@ description: All documents must follow the defined Confluence format and structu
 
 ## Applicability
 
-- Applies to: All agents that produce or review documents in the requirements-docs team
+- Applies to: All agents that produce or review documents in the business-analysis team
 
 ## Rule Content
 

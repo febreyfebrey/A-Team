@@ -68,9 +68,9 @@ You must reference these skills when assigning tasks to relevant agents:
 ### Phase 1: Definition
 
 1. Assign `product-manager` to write the feature spec
-   - PM may receive input directly from the client OR from the `requirements-docs` team output (PRD, SA, SD, Test Cases)
-   - When receiving `requirements-docs` output, PM must read all documents, extract functional requirements, API contracts, and DB schemas, then translate into implementation specs
-   - Context: client requirements or requirements-docs deliverables
+   - PM may receive input directly from the client OR from the `business-analysis` team output (PRD, SA, SD, Test Cases)
+   - When receiving `business-analysis` output, PM must read all documents, extract functional requirements, API contracts, and DB schemas, then translate into implementation specs
+   - Context: client requirements or business-analysis deliverables
    - Output: `docs/specs/{feature}.md`
 2. Assign `architect` to review the spec for technical feasibility
    - Context: `docs/specs/{feature}.md` + `docs/arch/*`
