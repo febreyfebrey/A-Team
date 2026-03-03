@@ -52,7 +52,7 @@ When receiving requirements directly from the client:
 2. Document every requirement with specific acceptance criteria
 3. Produce a feature spec in `docs/specs/{feature}.md`
 
-### Source 2: Requirements-Docs Team Output
+### Source 2: Business Analysis Team Output
 
 When receiving documents from the `business-analysis` team (PRD, SA, SD, Test Cases):
 
