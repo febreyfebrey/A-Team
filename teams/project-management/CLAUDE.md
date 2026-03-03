@@ -65,8 +65,33 @@
 
 ### 資料來源
 
-- 所有數據必須來自 JIRA API 即時查詢，不得使用快取或假設數據
+- 所有數據必須透過 Atlassian MCP 工具即時查詢 JIRA，不得使用快取或假設數據
 - 每次查詢必須限定專案 = RDC，不得查詢其他專案
+
+## JIRA MCP 整合
+
+本團隊透過 Atlassian 官方 MCP Server 存取 Jira Cloud。配置檔為專案根目錄的 `.mcp.json`。
+
+### 首次使用
+
+首次啟動 session 時，MCP 會自動導向瀏覽器完成 Atlassian OAuth 認證。認證完成後即可使用所有 JIRA 工具。
+
+### 可用操作
+
+透過 MCP 可執行以下 JIRA 操作：
+
+| 操作 | 說明 | 使用者 |
+|------|------|--------|
+| JQL 查詢 | 搜尋與篩選 RDC 專案工單 | Ticket Analyst、Development Tracker |
+| 讀取工單詳情 | 取得工單欄位、狀態、歷史記錄 | 全部分析角色 |
+| 更新欄位 | 更新 RankNumber (`customfield_10237`) | Backlog Manager |
+| 讀取變更日誌 | 取得狀態轉換歷史以計算停滯天數 | Development Tracker |
+
+### 使用限制
+
+- 所有 JIRA 寫入操作必須由 Coordinator 指派 Backlog Manager 執行
+- 分析角色（Ticket Analyst、Development Tracker）僅限讀取操作
+- 每次 MCP 呼叫必須包含 `project = RDC` 篩選條件
 
 ## 跨團隊協作流程
 
