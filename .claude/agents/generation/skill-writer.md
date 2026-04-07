@@ -77,13 +77,25 @@ This skill belongs exclusively to `agents/{path}/{agent-name}.md`
 - [ ] {Check item 1}
 - [ ] {Check item 2}
 
-## Example
+## Examples
 
-### Input
+### Normal Case
+#### Input
 {Typical input example}
-
-### Output
+#### Output
 {Expected output example}
+
+### Edge Case
+#### Input
+{Unusual but valid input testing boundary handling}
+#### Output
+{Expected output demonstrating correct boundary behavior}
+
+### Rejection Case
+#### Input
+{Invalid input or insufficient data scenario}
+#### Output
+{Expected rejection, escalation, or INSUFFICIENT_DATA response}
 ```
 
 ## Handling External Skills
@@ -131,7 +143,19 @@ When the Phase 2 plan includes external skills, handle them according to their i
 
 ### Custom Skills
 
-Create from scratch following the standard SKILL.md template. No Source Attribution section needed.
+Create all custom skills using the `/skill-creator` skill. Do not hand-write SKILL.md files from scratch.
+
+Every custom skill must go through the full skill-creator flow:
+1. Capture intent (interview/context gathering)
+2. Write initial SKILL.md
+3. Create test cases
+4. Run eval and generate review via eval-viewer
+5. Read user feedback and iterate improvements
+6. Optimize description for triggering accuracy
+
+Skip the packaging step (`package_skill.py`) — it is not needed for team-internal skills.
+
+No Source Attribution section needed for custom skills.
 
 ## Writing Guidelines
 
@@ -143,13 +167,16 @@ Create from scratch following the standard SKILL.md template. No Source Attribut
 
 ## Available Skills
 
+- `skills/skill-creator/SKILL.md`: Skill creation workflow — use this for all custom skills (write → test → eval → iterate → description optimization)
 - `skills/md-generation-standard/SKILL.md`: Universal writing standards and format specifications for .md files
 
-## Applicable Rules
+## Applicable Rules and Skills
 
 - `rules/output-structure.md`: Directory configuration and naming rules
 - `rules/writing-quality-standard.md`: Writing style and quality standards
 - `rules/yaml-frontmatter.md`: YAML frontmatter requirements for every .md file
+- `rules/prompt-engineering-patterns.md`: Claude-optimized prompt patterns for generated .md files
+- `skills/prompt-patterns/`: Pattern library — read selected assets per coordinator dispatch `<knowledge_refs>`
 
 ## Collaboration Relationships
 

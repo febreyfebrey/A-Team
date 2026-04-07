@@ -1,0 +1,56 @@
+# Project defaults for Codex in this repository.
+# A-Team is optimized for coordination-heavy sessions.
+
+model = "gpt-5.4"
+model_reasoning_effort = "xhigh"
+disable_response_storage = true
+
+# Prefer Codex-native project docs, but still load legacy teams that only ship CLAUDE.md.
+project_doc_fallback_filenames = ["AGENTS.md", "CLAUDE.md"]
+
+[features]
+multi_agent = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+
+[agents.team_architect]
+description = "Coordinate A-Team discovery, planning, generation, review, and delivery."
+config_file = "../agents/team-architect.toml"
+
+[agents.requirements_analyst]
+description = "Run structured discovery and produce the team requirements summary."
+config_file = "../agents/discovery/requirements-analyst.toml"
+
+[agents.role_designer]
+description = "Turn confirmed requirements into a clean role map with sound boundaries."
+config_file = "../agents/discovery/role-designer.toml"
+
+[agents.skill_planner]
+description = "Plan shared skills, specialist skills, and enforceable rules."
+config_file = "../agents/planning/skill-planner.toml"
+
+[agents.rule_writer]
+description = "Write rule files for generated Codex teams."
+config_file = "../agents/generation/rule-writer.toml"
+
+[agents.skill_writer]
+description = "Write authored and runtime skill files for generated teams."
+config_file = "../agents/generation/skill-writer.toml"
+
+[agents.agent_writer]
+description = "Write project-level Codex agent registry entries and agent TOML configs."
+config_file = "../agents/generation/agent-writer.toml"
+
+[agents.prompt_optimizer]
+description = "Tighten generated agent configs and docs without changing intent."
+config_file = "../agents/optimization/prompt-optimizer.toml"
+
+[agents.dialogue_reviewer]
+description = "Audit the consultation dialogue and produce a bilateral quality report."
+config_file = "../agents/review/dialogue-reviewer.toml"
+
+[agents.team_restructuring_master]
+description = "Recommend the smallest effective structural changes to an existing team."
+config_file = "../agents/evolution/team-restructuring-master.toml"
